@@ -1,0 +1,99 @@
+﻿@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/View1.cshtml";
+}
+
+<div class="f">
+<h1 align="center">Login</h1>
+Email: <input type="email" , id="txtLogin" , value="asd@asd.com" , class="search">
+<br/>
+Password: <input type="password" , id="txtPassword" , value="qwerty" ,  , class="search">
+<br/>
+<input type="submit" id="btnLogIn" value="Log in" class="btn" >
+    </div>
+
+
+@section scripts
+{
+    <script>
+       
+        $(function () {
+            
+            $("#btnLogIn").click(function () {
+
+                
+                var login = $("#txtLogin").val();
+                var password = $("#txtPassword").val();
+                var u = new Object();
+                u.Login = login;
+                u.Password = password;
+                var s = Validate();
+                var data1 = { "Login": login, "Password": password }
+                var settings = {
+                    type: "Post",
+                   dataType: "json",
+                    url: "/User/validateLogin",
+                    data: JSON.stringify({ "u": data1 }),
+                    contentType: false,
+                    processData: false,
+                    tradition: true,
+                    contentType: "application/json; charset=utf-8",
+                    succuss: function (response) {
+                    },
+                    error: function () {
+                        alert("Severe error");
+                    },
+
+                    complete: function (response, textStatus) {
+                         var x = JSON.parse(response.responseText);
+                        //var x = response.responseText;
+                       // alert(response + "   " + textStatus + "  " + response.responseText + "muzna "+ x.r);
+                        if (x.res == "Teacher") {
+                            
+                            location.href = "/TeacherHome/Index";
+                        }
+
+                       else if (x.res == "Student") {
+
+                            location.href = "/StudentHome/Index";
+                       }
+                      @*  if ("'" +@Session["userType"] +"'" == "Teacher")
+                        {
+                            
+                            $("#test").hide();
+                        }*@
+                            //else if(x.res== 1)
+                            //    alert("Email and Password does not match");
+                            //else if (x.res == -1)
+                            //    alert("Email does not exist");
+                        else
+                           alert("Email or password does not match");
+             
+               
+                        console.log(response.res);
+                    }
+                }
+                if (s=="succuss") {
+                    
+                    $.ajax(settings);
+                }
+                else
+                    alert(s);
+                    return false;
+             
+                });
+            });
+       
+        function Validate() {
+            var login = $("#txtLogin").val();
+            var password = $("#txtPassword").val();
+            if (login == "" || password == "") {
+                return "Empty fields";
+            }
+            if (!ValidateEmail(login)) {
+                return "invalid email";
+            }
+            return "succuss";
+        }
+        </script>
+    }

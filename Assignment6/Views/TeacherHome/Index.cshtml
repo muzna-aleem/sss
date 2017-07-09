@@ -1,0 +1,136 @@
+﻿@model List<Assignment6.Models.BO.Course>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/View1.cshtml";
+}
+
+<h2>Welcome Teacher</h2>
+ <h2>Teaching Courses</h2>
+
+
+@*<form action="/TeacherHome/LogOut" , method="get" , enctype="multipart/form-data" >
+<input type="submit" , id="stLogOut" , value="Log out", class="btn">
+    </form>*@
+
+    
+<table>  
+  
+    <tr>  
+        <th>Course Title</th>  
+         <th>Course Code</th>   
+      
+    </tr> 
+        
+    
+    @foreach (var d in Model)  
+    {  
+        <tr>  
+            <td>
+          @*  <td><a id="abc" href="/TeacherHome/CreateNewAssignment"> @d.CourseTitle</a></td>  *@
+             
+           @Html.ActionLink(d.CourseTitle, "Assignments", "TeacherHome", new { id = d.CourseCode}, d.CourseCode)
+
+           @* <td>@d.FirstName</td>  
+            <td>@d.LastName</td>  
+            <td>@d.Email</td>  
+            <td>@d.Salary</td>  
+            <td>@d.Company</td>  
+            <td>@d.Dept</td>  
+  *@ </td>
+            <td>@d.CourseCode</td>
+        </tr>  
+    }  
+        
+</table>  
+
+<div class="course">
+ <h1 align="center">Create new course</h1>
+<form action="/TeacherHome/insertCourse" , method="post" enctype="multipart/form-data">
+Course Title: <input type="text" , id="CourseTitle" , name="CourseTitle" , class="search">
+<br/>
+Credit Hours: <input type="text" , id="CreditHours" , name="CreditHours" , class="search">
+<br/>
+
+<input type="submit" id="btnCreateCourse" value="Create Course" , class="btn" >
+    </form>
+    </div>
+
+<form action="/TeacherHome/LogOut" , method="get" , enctype="multipart/form-data" >
+<input type="submit" , id="stLogOut" , value="Log out", class="lbtn">
+    </form>
+@section scripts
+{
+    <script>
+       
+        //$(function () {
+        //    $("#abc").click(function (s) {
+            
+              
+        //        alert("yaaaaaaaaaaaaa");
+        //    }
+        //        );
+
+
+        //    $("#btnCreateCourse").click(function () {
+
+                
+        //        var title = $("#txtCourseTitle").val();
+        //        var hours = $("#txtCreditHours").val();
+        //        ////var u = new Object();
+        //        ////u.CourseTitle = login;
+        //        ////u.CreditHours = hours;
+          
+        //        var data1 = { "CourseTitle": title, "CreditHours": hours }
+        //        var settings = {
+        //            type: "POST",
+        //           dataType: "json",
+        //            url: "/TeacherHome/insertCourse",
+        //            data: JSON.stringify({ "course": data1 }),
+        //            contentType: false,
+        //            processData: false,
+        //            tradition: true,
+        //            contentType: "application/json; charset=utf-8",
+        //            succuss: function (response) {
+        //            },
+        //            error: function () {
+        //                alert("Severe error");
+        //            },
+
+        //            complete: function (response, textStatus) {
+        //                 var x = JSON.parse(response.responseText);
+        //                //var x = response.responseText;
+        //                alert(response + "   " + textStatus + "  " + response.responseText + "muzna "+ x.res);
+        //                if (x.res > 0) {
+                            
+        //                    alert("Course created succussfully");
+        //                   // location.href = "/TeacherHome/Index";
+        //                }
+
+        //               //else if (x.res == "Student") {
+
+        //               //     location.href = "/StudentHome/Index";
+        //               // }
+        //                //else if(x.res== 1)
+        //                //    alert("Email and Password does not match");
+        //                //else if (x.res == -1)
+        //                //    alert("Email does not exist");
+        //                else
+        //                    alert("Course not created");
+        //                console.log(response.res);
+        //            }
+        //        }
+        //        //if (s=="succuss") {
+                    
+        //        $.ajax(settings);
+        //        //}
+        //        //else
+        //          //  alert(s);
+        //            return false;
+             
+        //        });
+        //    });
+       
+    
+        </script>
+    }

@@ -1,0 +1,98 @@
+﻿
+body.c {
+   
+    font-family:'Buxton Sketch';
+    background-color:#e6caf3;
+}
+
+    input.search{
+            height:2.5em;
+      width:70%;
+
+        margin-left: 50px;
+        /*float:right;*/
+         margin-top: 20px;
+        }
+        input.btn{
+            height:2.5em ;
+            width : 15em ;
+            color: white;
+            background-color: #411f6d;
+            margin-left: 30%;
+            border-radius: 35px;
+            margin-top:5%;
+        }
+
+        /*input.txt {
+        background-color: #188220;
+        border: 1px solid #2a1212;
+        cursor: pointer;
+        font-size: 1.2em;
+        font-weight: 600;
+        padding: 7px;
+        margin-right: 8px;
+        width: auto;
+        border-radius: 50px;
+    }*/
+
+        button:hover {
+    opacity: 0.8;
+}
+        .f {
+            background-color:#a251c3;
+            width:40%;
+   /*// border: 3px solid #000;*/
+    border-radius: 20px;
+    margin-left: 30%;
+    margin-top: 3%;
+    box-shadow: 5px 5px 5px #af82be;
+}
+
+.log {
+      margin-left: 80%;
+      margin-top:-20%;
+      
+
+}
+input.lbtn{
+   height:2.5em ;
+            width : 15em ;
+            color: white;
+            background-color: #411f6d;
+             margin-left: 85%;
+      margin-top:2%;
+            border-radius: 35px;
+}
+.marginLeft {
+    margin-left:45%;
+}
+
+.course{
+        background-color:#a251c3;
+            width:40%;
+   /*// border: 3px solid #000;*/
+    border-radius: 20px;
+    margin-left: 60%;
+   margin-top:-10%;
+    box-shadow: 5px 5px 5px #af82be;
+}
+
+.head {
+
+   height:130px;
+    background-color:#411f6d;
+    color:white;
+    font-size: 250%;
+}
+
+.spebtn {
+      /*margin-top:-25%;*/
+        height:2.5em ;
+            width : 15em ;
+            color: white;
+            background-color: #411f6d;
+            margin-left: 80%;
+            border-radius: 35px;
+            /*margin-top:5%;*/
+}
+       

@@ -1,0 +1,115 @@
+﻿@{
+    Layout = "~/Views/Shared/View1.cshtml";
+    ViewBag.Title = "Sign Up";
+}
+
+
+<div class="f">
+    <h1 align="center">Sign Up </h1>
+Email: <input type="email" , id="txtLogin" , class="search" >
+<br/>
+Name: <input type="text" , id="txtName" , class="search">
+<br/>
+
+Password: <input type="password" , id="txtPassword" , class="search">
+<br/>
+Select User Type:
+<select id="type" , class="search">
+  <option class="search" , value="" disabled="disabled" selected="selected">Select Type</option>
+  <option  class="search" , value="1">Teacher</option>
+  <option  class="search" , value="2">Student</option>
+</select>
+<br/>
+<input type="submit" id="btnSignUp" value="Sign Up", class="btn">
+<br/>
+<a  href="~/Home/ForgotPassword">Forgot Password</a>
+    </div>
+<a class="marginLeft"href="~/Home/Login">Already have an account?</a>
+
+@section scripts
+{
+    
+    <script>
+       
+        $(function () {
+            
+            $("#btnSignUp").click(function () {
+               
+                var login = $("#txtLogin").val();
+                var password = $("#txtPassword").val();
+                var name = $("#txtName").val();
+                var type = $('#type').find('option:selected').text();
+                var u = new Object();
+                u.Login = login;
+                u.Password = password;
+                u.Name = name;
+                u.Type = type;
+                var s = Validate();
+                
+                var settings = {
+                    type: "POST",
+                    dataType: "json",
+                    url: "/User/insert",
+                   
+                    data: JSON.stringify(u),
+                    contentType: false,
+                    processData: false,
+                    tradition: true,
+                    contentType: "application/json; charset=utf-8",
+                    succuss: function (response) {
+                    },
+                    error: function () {
+                        alert("Severe error");
+                    },
+
+                    complete: function (response, textStatus) {
+                        var x = JSON.parse(response.responseText);
+                        if (x.res == "Teacher") {
+
+                            location.href = "/TeacherHome/Index";
+                        }
+
+                        else if (x.res == "Student") {
+
+                            location.href = "/StudentHome/Index";
+                        }
+                        //if (x.res == true) {
+                        //    alert("Succussfully signed up");
+                        //}
+                        //else if(x.res==false)
+                        //    alert("There is already an account with the same email");
+                        else
+                            alert("Error");
+                        console.log(response.res);
+                    }
+                }
+                
+
+                if (s=="succuss") {
+                    
+                    $.ajax(settings);
+                }
+                else
+                    alert(s);
+                    return false;
+             
+                });
+            });
+
+      
+        function Validate()
+        {
+            var login = $("#txtLogin").val();
+            var password = $("#txtPassword").val();
+            if ( login== "" || password == "") {
+              return "Empty fields";
+            }
+            if (!ValidateEmail(login)) {
+                return "invalid email";
+            }
+            if (!validatePassword(password))
+                return "Password should be atleast 5 characters long";
+            return "succuss";
+        }
+    </script>
+}

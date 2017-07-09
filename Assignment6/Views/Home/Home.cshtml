@@ -1,0 +1,8 @@
+﻿@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/View1.cshtml";
+}
+
+<h2>Home</h2>
+@{ Assignment6.Models.BO.User o = (Assignment6.Models.BO.User)Session["user"]; }
+<h1>Welcome @o.Name </h1>

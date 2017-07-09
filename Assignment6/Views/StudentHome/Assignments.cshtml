@@ -1,0 +1,72 @@
+﻿@model List<Assignment6.Models.BO.Assignment>
+@{
+    ViewBag.Title = "Assignments";
+    Layout = "~/Views/Shared/View1.cshtml";
+}
+
+
+<h1 align="center" >Assignments</h1>
+<table>
+
+@{   
+foreach (var d in Model){
+     <tr>
+        <td>
+    
+ @Html.ActionLink(d.DisplayName , "AssignmentSubmission", "StudentHome", new { id = d.AssignmentId }, d.AssignmentId)
+ </td>
+
+        @* <td>  
+             @d.DisplayName</td>*@
+             </tr>
+
+}
+}
+    </table>
+
+
+@*Assignment Title <input type="text" , id="AssTitle">
+<br/>
+Assignment Display Name <input type="text" , id="AssName">
+<br/>
+Difficulty Level <input type="text" , id="AssLevel">
+<br/>
+Total Marks <input type="number" , id="AssMarks">
+<br/>
+Format <input type="text" , id="AssFormat">
+<br/>
+Deadline <input type="datetime" , id="AssDeadline">
+<br/>
+Upload File <input type="file" , id="AssFile">
+<br/>*@
+
+@*<div class="table-responsive">
+        <input type="text" id="Name" />
+        <input type="text" id="Address" />
+        <button onclick="OpenDialog()">
+            Open Dialog</button>
+</div>
+<div id="Dialog-Box">
+        <input type="text" id="Dialog-Name" />
+        <input type="text" id="Dialog-Address" />
+        <input type="submit" onclick="onsave()" value="save" />
+ </div>*@
+
+@section scripts{
+
+
+    
+    <script>
+        $(function () {
+            $("#btnNew").click(function () {
+
+
+             //   alert("Clicked");
+                location.href = "/TeacherHome/CreateNewAssignment";
+                return false;
+            }
+            );
+        });
+        </script>
+
+}

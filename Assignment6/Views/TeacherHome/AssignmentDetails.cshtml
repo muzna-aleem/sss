@@ -1,0 +1,28 @@
+﻿@model List<Assignment6.Models.BO.Submission>
+@{
+    ViewBag.Title = "AssignmentDetails";
+    Layout = "~/Views/Shared/View1.cshtml";
+}
+
+<h2 align="center">Assignment Submissions and  Details</h2>
+
+
+    
+ @*@Html.ActionLink(d.DisplayName , "AssignmentDetails", "TeacherHome", new { id = d.AssignmentId }, d.AssignmentId);*@
+<table>
+        <th>Solution
+            </th>
+        <th>Submission Time
+            </th>
+         @foreach(var d in Model)
+         {
+             <tr>
+                 <td>
+                  @Html.ActionLink(d.DisplayName , "Download", "TeacherHome", new { id = d.Id}, d.Id)
+                     </td>
+                 </tr>
+             <tr><td>@d.SubmissionTime</td></tr>
+         }
+  
+
+</table>

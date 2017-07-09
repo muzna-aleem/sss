@@ -1,0 +1,58 @@
+﻿@model List<Assignment6.Models.BO.Course>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/View1.cshtml";
+}
+
+<h2>Welcome Student</h2>
+
+
+        <h2>Enrolled Courses</h2>
+
+<table>  
+    <tr>  
+        <th>Course Title</th>  
+         <th>Course Code</th>  
+      
+    </tr>  
+    @foreach (var d in Model)  
+    {  
+        <tr>  
+            <td>
+       
+             
+           @Html.ActionLink(d.CourseTitle, "Assignments", "StudentHome", new { id = d.CourseCode}, d.CourseCode)
+
+          </td>
+
+              <td>@d.CourseCode</td>
+        </tr>  
+    }  
+</table>  
+<div class="course">
+    <h1 align="center">Enroll in Course</h1>
+<form action="/StudentHome/insertStudentCourse" , method="post" enctype="multipart/form-data">
+Enter Course Code (Provided by your instructor): <input type="text" , id="txtCourseTitle" , name="courseId" ,  class="search">
+<br/>
+
+<input type="submit" id="btnCreateCourse" value="Enroll in a Course" , class="btn">
+
+    </form>
+
+    </div>
+
+
+<form action="/StudentHome/LogOut" , method="get" , enctype="multipart/form-data" >
+<input type="submit" , id="stLogOut" , value="Log out", class="lbtn">
+    </form>
+    
+
+@section scripts
+{
+    <script>
+       
+    
+    
+        </script>
+    }

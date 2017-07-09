@@ -1,0 +1,105 @@
+﻿@*@model Assignment6.Models.BO.Submission*@
+@{
+    ViewBag.Title = "submitAssignment";
+    Layout = "~/Views/Shared/View1.cshtml";
+}
+
+<form action="/StudentHome/Download" , method="get" , enctype="multipart/form-data" >
+<input type="submit" , id="download" , value="Download Assignment", class="btn">
+    </form>
+
+
+<div class="f">
+    <h1 align="center">Submit Assignment</h1>
+<form action="/StudentHome/submitAssignment" , method="post" , enctype="multipart/form-data">
+Submit Assignment<input type="file" name="Link" ,  , class="search">
+    <input type="submit" , value="Upload" , id="btnSubmit" , class="btn">
+  </form>
+    </div>
+
+@*@{
+    if(Model != null){
+        int id = Model.Id;
+        
+        if(id!=0){
+            String s = id.ToString();
+        if( Session[s] == "ok")
+        {
+            <h1>Submitted</h1>
+        }
+        }
+    }
+}*@
+
+
+@section scripts
+{
+    <script>
+       
+        //$(function () {
+          
+
+        //    $("#btnSubmit").click(function () {
+
+                
+        //        //var title = $("#txtCourseTitle").val();
+        //        //var hours = $("#txtCreditHours").val();
+        //        ////var u = new Object();
+        //        ////u.CourseTitle = login;
+        //        ////u.CreditHours = hours;
+          
+        //        //var data1 = { "CourseTitle": title, "CreditHours": hours }
+        //        var data1 = {}
+
+        //        var settings = {
+        //            type: "POST",
+        //           dataType: "json",
+        //            url: "/StudentHome/SubmitAssignment",
+        //            data: JSON.stringify({ "sub": data1 }),
+        //            contentType: false,
+        //            processData: false,
+        //            tradition: true,
+        //            contentType: "application/json; charset=utf-8",
+        //            succuss: function (response) {
+        //            },
+        //            error: function () {
+        //                alert("Severe error");
+        //            },
+
+        //            complete: function (response, textStatus) {
+        //                 var x = JSON.parse(response.responseText);
+        //                //var x = response.responseText;
+        //                alert(response + "   " + textStatus + "  " + response.responseText + "muzna "+ x.res);
+        //                if (x.res > 0) {
+                            
+        //                    alert("Assignment submitted succussfully");
+        //                   // location.href = "/TeacherHome/Index";
+        //                }
+
+        //               //else if (x.res == "Student") {
+
+        //               //     location.href = "/StudentHome/Index";
+        //               // }
+        //                //else if(x.res== 1)
+        //                //    alert("Email and Password does not match");
+        //                //else if (x.res == -1)
+        //                //    alert("Email does not exist");
+        //                else
+        //                    alert("Assignment not Submitted");
+        //                console.log(response.res);
+        //            }
+        //        }
+        //        //if (s=="succuss") {
+                    
+        //        $.ajax(settings);
+        //        //}
+        //        //else
+        //          //  alert(s);
+        //            return false;
+             
+        //        });
+        //    });
+       
+    
+        </script>
+    }
